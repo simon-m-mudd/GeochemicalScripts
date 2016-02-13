@@ -14,24 +14,30 @@ from matplotlib import rcParams
 import matplotlib.lines as mpllines
 from matplotlib.ticker import FormatStrFormatter
 
+# This is equation 24 in Lebedeva et al 2010
+# ums is velocity squared
 def calculate_beta(k, D, phi, ums):
   beta = np.sqrt(1+4*k*D*phi/(ums*ums))
   return beta
   
+# This is equation 4 in Lebedeva et al 2010  
 def calculate_k(k_ab, phi_ab, s_ab, Psi_ab):
   k = 2*k_ab*phi_ab*s_ab*Psi_ab
   
   print k
   return k
 
+# This calculates the specific surface area for a given diameter
 def calculate_geom_ssa(pDiam):
   ssa = 6/pDiam
   return ssa
-  
+ 
+# calculates the velocity in metres per second given velocity in metres per year 
 def calculate_ums(umyr):
   ums = umyr/(365*24*60*60)
   return ums
 
+# This is equation 23 in Lebedeva et al 2010 
 def calculate_weath_thick(u,ssa, k_ab, phi, phi_ab, Psi_ab, D,Ce,Cr,Cl):
 
 
@@ -44,7 +50,7 @@ def calculate_weath_thick(u,ssa, k_ab, phi, phi_ab, Psi_ab, D,Ce,Cr,Cl):
   return delta
 
 
-
+# Plots the sensitivity of the weathering thickness to flow rate
 def Plot_flow_rate_sensitivity():
 
   # These set the font size
